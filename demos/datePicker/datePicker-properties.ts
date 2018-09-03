@@ -41,7 +41,7 @@ export function getDateProps(date: DatePicker): (simple | complex)[] {
     props.push({ prop: 'readonly', type: 'bool' });
     props.push({ prop: 'showClearButton', type: 'bool' });
     props.push({ prop: 'showTodayButton', type: 'bool' });
-    props.push({ prop: 'strictMode ', type: 'bool' });
+    props.push({ prop: 'strictMode', type: 'bool' });
     props.push({ prop: 'weekNumber', type: 'bool' });
     props.push({ prop: 'cssClass', type: 'text' });
     props.push({ prop: 'depth', data: ['Month', 'Year', 'Decade'], type: 'select' });
