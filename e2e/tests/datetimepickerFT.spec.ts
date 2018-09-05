@@ -68,7 +68,6 @@ describe('DateTimePicker', function () {
 
         });
 
-
         it('DateTimePicker_with_RTL_clear', async () => {
             await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
@@ -80,7 +79,6 @@ describe('DateTimePicker', function () {
             browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimepicker_rtl_clear_input_' + themes[i]);
 
         });
-
 
         it('DateTimePicker_RTL_Floatlabel_never', async () => {
             await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
@@ -630,6 +628,50 @@ describe('DateTimePicker', function () {
             await element(helper.focusIn_Id).click();
             await element(helper.blur_Id).click();
             browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_rtl_blur_input_' + themes[i]);
+        });
+
+        it('DateTimePicker_Rtl_start_depth', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.rtl_Id).click();
+            await element(helper.value_Id).sendKeys("3/2/2016 12:00 AM" + Key.ENTER);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.depth_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_Rtl_start_depth_datepoupup1_' + themes[i]);
+            await element(By.xpath("//*[contains(@class,'e-selected')]")).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_Rtl_start_depth_datepoupup2_' + themes[i]);
+        });
+
+        it('DateTimePicker_Rtl_start_depth_2', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.rtl_Id).click();
+            await element(helper.value_Id).sendKeys("3/2/2016 12:00 AM" + Key.ENTER);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.depth_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_Rtl_start_depth_2_datepoupup1_' + themes[i]);
+            await element(By.xpath("//*[contains(@class,'e-selected')]")).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_Rtl_start_depth_2_datepoupup2_' + themes[i]);
+        });
+
+        it('DateTimePicker_Rtl_start_depth_3', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("3/2/2016 12:00 AM" + Key.ENTER);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_Rtl_start_depth_3_datepoupup1_' + themes[i]);
+            await element(By.xpath("//*[contains(@class,'e-selected')]")).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_Rtl_start_depth_3_datepoupup2_' + themes[i]);
+            await element(By.xpath("//*[contains(@class,'e-selected')]")).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_Rtl_start_depth_3_datepoupup3_' + themes[i]);
         });
 
         // enable property e2e test cases
@@ -2721,5 +2763,117 @@ describe('DateTimePicker', function () {
             browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_blur_input_' + themes[i]);
         });
 
+        it('DateTimePicker_blur', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("2/12/2012 3:00 AM" + Key.ENTER);
+            await element(helper.focusIn_Id).click();
+            await element(helper.blur_Id).click();
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_blur_input_' + themes[i]);
+        });
+
+        it('DateTimePicker_step', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.step_Id).clear();
+            await element(helper.step_Id).sendKeys("1200" + Key.ENTER);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_step_4_timepoupup_' + themes[i]);
+        });
+
+        it('DateTimePicker_step', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.step_Id).clear();
+            await element(helper.step_Id).sendKeys("12000" + Key.ENTER);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_step_outof_timepoupup_' + themes[i]);
+        });
+
+        it('DateTimePicker_error_class', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("3/2/2016 8:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("3/2/2016 10:00 AM" + Key.ENTER);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_error_class_datepoupup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_error_class_timepoupup_' + themes[i]);
+            await element(helper.value_Id).sendKeys("3/2/2016 12:00 AM" + Key.ENTER);
+            await element(helper.focusOut_Id).click();
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_error_class_input_' + themes[i]);
+        });
+
+        it('DateTimePicker_start_depth', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("3/2/2016 12:00 AM" + Key.ENTER);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.depth_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_start_depth_datepoupup1_' + themes[i]);
+            await element(By.xpath("//*[contains(@class,'e-selected')]")).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_start_depth_datepoupup2_' + themes[i]);
+        });
+
+        it('DateTimePicker_start_depth_2', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("3/2/2016 12:00 AM" + Key.ENTER);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.depth_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_start_depth_2_datepoupup1_' + themes[i]);
+            await element(By.xpath("//*[contains(@class,'e-selected')]")).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_start_depth_2_datepoupup2_' + themes[i]);
+           // await element(By.xpath("//*[contains(@class,'e-selected')]")).click();
+           // browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_start_depth_3_datepoupup3_' + themes[i]);
+        });
+
+        it('DateTimePicker_start_depth_3', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("3/2/2016 12:00 AM" + Key.ENTER);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_start_depth_3_datepoupup1_' + themes[i]);
+            await element(By.xpath("//*[contains(@class,'e-selected')]")).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_start_depth_3_datepoupup2_' + themes[i]);
+            await element(By.xpath("//*[contains(@class,'e-selected')]")).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_start_depth_3_datepoupup3_' + themes[i]);
+        });
+
+         it('DateTimePicker_TimeFormat_HH_mm_step', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.timeFormat_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.step_Id).clear();
+            await element(helper.step_Id).sendKeys("10" + Key.ENTER);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'Datetimepicker_TimeFormat_HH_mm_step_timepopup_' + themes[i]);
+        });
+        it('DateTimePicker_TimeFormat_HH_step', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.timeFormat_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.timeFormat_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.step_Id).clear();
+            await element(helper.step_Id).sendKeys("10" + Key.ENTER);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'Datetimepicker_TimeFormat_HH_step_timepopup_' + themes[i]);
+        });
     }
 });
