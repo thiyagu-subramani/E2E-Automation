@@ -5,10 +5,11 @@ import { Property, queryParams } from "@syncfusion/ej2-base";
 var helper: Helper = new Helper();
 
 //var event = new Event('change');
-let themes: String[] = ["material", "fabric", "bootstrap", "highcontrast"];
+//let themes: String[] = ["material", "fabric", "bootstrap", "highcontrast"];
+let themes: String[] = ["material"];
 describe('Calendar', function () {
     for (let i = 0; i < themes.length; i++) {
-        let fileName: string = 'https://cdn.syncfusion.com/ej2/ej2-calendars/styles/' + themes[i] + '.css';
+        let fileName: string = 'https://cdn.syncfusion.com/ej2/' + themes[i] + '.css';
         it('Default calendar', function (done) {
             browser.get(browser.basePath + '/demos/calendar/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
@@ -155,7 +156,6 @@ describe('Calendar', function () {
                 element(helper.min_Id).sendKeys("4/4/2014" + Key.ENTER);
                 browser.sleep(2000);
                 browser.compareScreen(element(By.id('calendar')), 'Calendar_with_RTL_Min_Value_4_' + themes[i]);
-
                 done();
             });
         });
@@ -1114,7 +1114,7 @@ describe('Calendar', function () {
                 element(helper.start_Id).sendKeys("Year" + Key.ENTER);
                 element(helper.min_Id).sendKeys("4/4/2045" + Key.ENTER);
                 browser.sleep(2000);
-                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Min_6_' + themes[i]);
+                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Min_year_6_' + themes[i]);
                 done();
             });
         });
@@ -1154,7 +1154,7 @@ describe('Calendar', function () {
                 element(helper.start_Id).sendKeys("Year" + Key.ENTER);
                 element(helper.max_Id).sendKeys("4/4/2015" + Key.ENTER);
                 browser.sleep(2000);
-                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_' + themes[i]);
+                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_year' + themes[i]);
                 done();
             });
         });
@@ -1168,7 +1168,7 @@ describe('Calendar', function () {
                 element(helper.max_Id).sendKeys("4/4/2045" + Key.ENTER);
                 element(helper.value_Id).sendKeys("5/5/2045" + Key.ENTER);
                 browser.sleep(2000);
-                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_1_' + themes[i]);
+                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_year_1_' + themes[i]);
                 done();
             });
         });
@@ -1182,7 +1182,7 @@ describe('Calendar', function () {
                 element(helper.max_Id).sendKeys("7/4/2045" + Key.ENTER);
                 element(helper.value_Id).sendKeys("5/5/2045" + Key.ENTER);
                 browser.sleep(2000);
-                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_2_' + themes[i]);
+                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_year_2_' + themes[i]);
                 done();
             });
         });
@@ -1196,7 +1196,7 @@ describe('Calendar', function () {
                 element(helper.max_Id).sendKeys("7/4/2015" + Key.ENTER);
                 element(helper.value_Id).sendKeys("7/4/2015" + Key.ENTER);
                 browser.sleep(2000);
-                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_3_' + themes[i]);
+                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_year_3_' + themes[i]);
                 done();
             });
         });
@@ -1209,7 +1209,7 @@ describe('Calendar', function () {
                 element(helper.max_Id).sendKeys("7/4/2015" + Key.ENTER);
                 element(helper.value_Id).sendKeys("7/4/2014" + Key.ENTER);
                 browser.sleep(2000);
-                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_4_' + themes[i]);
+                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_year_4_' + themes[i]);
                 done();
             });
         });
@@ -1240,7 +1240,7 @@ describe('Calendar', function () {
                 element(helper.max_Id).sendKeys("4/4/2022" + Key.ENTER);
                 element(helper.min_Id).sendKeys("6/4/2022" + Key.ENTER);
                 browser.sleep(2000);
-                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_min_decade_' + themes[i]);
+                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_min_year_' + themes[i]);
                 done();
             });
         });
@@ -1357,7 +1357,7 @@ describe('Calendar', function () {
                 element(helper.start_Id).sendKeys("Decade" + Key.ENTER);
                 element(helper.min_Id).sendKeys("4/4/2045" + Key.ENTER);
                 browser.sleep(2000);
-                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Min_6_' + themes[i]);
+                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Min_decade_6_' + themes[i]);
                 done();
             });
         });
@@ -1397,7 +1397,7 @@ describe('Calendar', function () {
                 element(helper.start_Id).sendKeys("Decade" + Key.ENTER);
                 element(helper.max_Id).sendKeys("4/4/2015" + Key.ENTER);
                 browser.sleep(2000);
-                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_' + themes[i]);
+                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_decade' + themes[i]);
                 done();
             });
         });
@@ -1412,7 +1412,7 @@ describe('Calendar', function () {
                 element(helper.max_Id).sendKeys("4/4/2040" + Key.ENTER);
                 element(helper.value_Id).sendKeys("5/5/2045" + Key.ENTER);
                 browser.sleep(2000);
-                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_1_' + themes[i]);
+                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_decade_' + themes[i]);
                 done();
             });
         });
@@ -1426,7 +1426,7 @@ describe('Calendar', function () {
                 element(helper.max_Id).sendKeys("7/4/2045" + Key.ENTER);
                 element(helper.value_Id).sendKeys("5/5/2040" + Key.ENTER);
                 browser.sleep(2000);
-                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_2_' + themes[i]);
+                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_decade_2_' + themes[i]);
                 done();
             });
         });
@@ -1441,7 +1441,7 @@ describe('Calendar', function () {
                 element(helper.max_Id).sendKeys("7/4/2015" + Key.ENTER);
                 element(helper.value_Id).sendKeys("7/4/2015" + Key.ENTER);
                 browser.sleep(2000);
-                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_3_' + themes[i]);
+                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_deacde_3_' + themes[i]);
                 done();
             });
         });
@@ -1456,7 +1456,7 @@ describe('Calendar', function () {
                 element(helper.max_Id).sendKeys("7/4/2015" + Key.ENTER);
                 element(helper.value_Id).sendKeys("7/4/2014" + Key.ENTER);
                 browser.sleep(2000);
-                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_4_' + themes[i]);
+                browser.compareScreen(element(By.id('calendar')), 'Calendar_with_Max_decade_4_' + themes[i]);
                 done();
             });
         });

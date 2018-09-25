@@ -5,11 +5,11 @@ import { Property, queryParams } from "@syncfusion/ej2-base";
 var helper: Helper = new Helper();
 
 //var event = new Event('change');
-//let themes: String[] = ["material"];
-let themes: String[] = ["material", "fabric", "bootstrap", "highcontrast"];
+let themes: String[] = ["material"];
+//let themes: String[] = ["material", "fabric", "bootstrap", "highcontrast"];
 describe('DatePicker', function () {
     for (let i = 0; i < themes.length; i++) {
-        let fileName: string = 'https://cdn.syncfusion.com/ej2/ej2-calendars/styles/' + themes[i] + '.css';
+        let fileName: string = 'https://cdn.syncfusion.com/ej2/' + themes[i] + '.css';
         it('Default DatePicker - case 1', async () => {
             await browser.get(browser.basePath + '/demos/datePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
@@ -113,8 +113,7 @@ describe('DatePicker', function () {
             await element(helper.read_Id).click();
             await element(helper.value_Id).sendKeys("2/12/2039" + Key.ENTER);
             await element(helper.focusIn_Id).click();
-            browser.sleep(2000);
-            browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_Rtl_readonly_focus_input_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'Datepicker_Rtl_readonly_focus_input_' + themes[i]);
         });
 
         it('DatePicker with RTL and Start_Year', async () => {
@@ -411,6 +410,7 @@ describe('DatePicker', function () {
             await element(helper.max_Id).clear();
             await element(helper.max_Id).sendKeys("2/22/2012" + Key.ENTER);
             await element(helper.value_Id).sendKeys("2/2/2012" + Key.ENTER);
+            await browser.sleep(20000);
             browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_Rtl_max_value_input_' + themes[i]);
         });
 
@@ -459,7 +459,6 @@ describe('DatePicker', function () {
             await element(helper.max_Id).clear();
             await element(helper.max_Id).sendKeys("2/22/2012" + Key.ENTER);
             await element(helper.value_Id).sendKeys("2/22/2012" + Key.ENTER);
-            await element(helper.pickerIcon_ClassName).click();
             browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_Rtl_max_equal_value_input' + themes[i]);
         });
 
@@ -477,16 +476,17 @@ describe('DatePicker', function () {
         });
 
 
-        it('DatePicker with RTL and value', async () => {
+        it('DatePicker with RTL and value_1', async () => {
             await browser.get(browser.basePath + '/demos/datePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.rtl_Id).click();
             await element(helper.value_Id).sendKeys("2/22/1111" + Key.ENTER);
+            await browser.sleep(20000);
             browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_Rtl_minvalue_input_' + themes[i]);
         });
 
-        it('DatePicker with RTL and value', async () => {
+        it('DatePicker with RTL and value_2', async () => {
             await browser.get(browser.basePath + '/demos/datePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
@@ -497,25 +497,25 @@ describe('DatePicker', function () {
 
         });
 
-        it('DatePicker with RTL and value', async () => {
+        it('DatePicker with RTL and value_3', async () => {
             await browser.get(browser.basePath + '/demos/datePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.rtl_Id).click();
             await element(helper.value_Id).sendKeys("2/22/9999" + Key.ENTER);
-            await element(helper.pickerIcon_ClassName).click();
+            await browser.sleep(20000);
             browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_Rtl_maxvalue_input_' + themes[i]);
 
         });
 
-        it('DatePicker with RTL and value', async () => {
+        it('DatePicker with RTL and value_4', async () => {
             await browser.get(browser.basePath + '/demos/datePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.rtl_Id).click();
             await element(helper.value_Id).sendKeys("2/22/9999" + Key.ENTER);
             await element(helper.pickerIcon_ClassName).click();
-            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Datepicker_maxRtl_value_popup_' + themes[i]);
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Datepicker_Rtl_maxvalue_popup_' + themes[i]);
 
         });
 
@@ -763,7 +763,7 @@ describe('DatePicker', function () {
             browser.executeScript(path);
             await element(helper.rtl_Id).click();
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_Rtl_with_focusIn_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'Datepicker_Rtl_with_focusIn_' + themes[i]);
 
         });
         it('DatePicker with RTL and value focusIn', async () => {
@@ -773,7 +773,7 @@ describe('DatePicker', function () {
             await element(helper.rtl_Id).click();
             await element(helper.value_Id).sendKeys("2/12/2039" + Key.ENTER);
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(element(By.className('e-date-wrapper')), 'images_1_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'DatePicker with RTL and value focusIn_1_' + themes[i]);
 
         });
 
@@ -1710,6 +1710,7 @@ describe('DatePicker', function () {
             browser.executeScript(path);
             await element(helper.enable_Id).click();
             await element(helper.focusIn_Id).click();
+            await browser.sleep(20000);
             browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_disable_focus_' + themes[i]);
 
         });
@@ -1721,6 +1722,7 @@ describe('DatePicker', function () {
             await element(helper.clear_Id).click();
             await element(helper.value_Id).sendKeys("5/5/2018" + Key.ENTER);
             await element(helper.pickerIcon_ClassName).click();
+            await browser.sleep(20000);
             browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_Rtl_clear_' + themes[i]);
 
         });
@@ -1732,7 +1734,7 @@ describe('DatePicker', function () {
             await element(helper.clear_Id).click();
             await element(helper.value_Id).sendKeys("5/5/2018" + Key.ENTER);
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_clear_value_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'Datepicker_clear_value_' + themes[i]);
 
         });
         it('DatePicker with_readonly', async () => {
@@ -1763,7 +1765,7 @@ describe('DatePicker', function () {
             await element(helper.read_Id).click();
             await element(helper.value_Id).sendKeys("2/12/2039" + Key.ENTER);
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_readonly_focus_' + themes[i]);
+            browser.compareScreen(By.className('content-wrapper')), 'Datepicker_readonly_focus_' + themes[i]);
 
         });
 
@@ -1799,7 +1801,7 @@ describe('DatePicker', function () {
             await element(helper.clear_Id).click();
             await element(helper.value_Id).sendKeys("2/12/2017" + Key.ENTER);
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(element(By.className('e-date-wrapper')), 'DatePicker_Start_Year_clear_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'DatePicker_Start_Year_clear_' + themes[i]);
 
         });
 
@@ -2191,7 +2193,6 @@ describe('DatePicker', function () {
             await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
             await element(helper.clear_Id).click();
             await element(helper.value_Id).sendKeys("2/12/2017" + Key.ENTER);
-            await element(helper.pickerIcon_ClassName).click();
             browser.compareScreen(element(By.className('e-date-wrapper')), 'DatePicker_start_decade_clear_' + themes[i]);
 
         });
@@ -2426,7 +2427,7 @@ describe('DatePicker', function () {
             await element(helper.width_Id).clear();
             await element(helper.width_Id).sendKeys("450" + Key.ENTER);
             await element(helper.value_Id).sendKeys("2/22/2012" + Key.ENTER);
-            browser.compareScreen(element(By.className('e-date-wrapper')), 'DatePicker_start_decade_and_width_' + themes[i]);
+            browser.compareScreen(element(By.className('e-date-wrapper')), 'DatePicker_start_decade_and_width_1_' + themes[i]);
 
         });
 
@@ -2440,7 +2441,8 @@ describe('DatePicker', function () {
             await element(helper.width_Id).sendKeys("450" + Key.ENTER);
             await element(helper.value_Id).sendKeys("2/22/2012" + Key.ENTER);
             await element(helper.pickerIcon_ClassName).click();
-            browser.compareScreen(element(By.className('e-popup-wrapper')), 'DatePicker_start_decade_and_width_' + themes[i]);
+            await browser.sleep(20000);
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'DatePicker_start_decade_and_width_2_' + themes[i]);
 
         });
 
@@ -2543,7 +2545,7 @@ describe('DatePicker', function () {
             await element(helper.min_Id).sendKeys("2/2/2012" + Key.ENTER);
             await element(helper.max_Id).sendKeys("2/22/2012" + Key.ENTER);
             await element(helper.pickerIcon_ClassName).click();
-            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Datepicker_firstday_min_max_' + themes[i]);
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Datepicker_firstday_min_max_1_' + themes[i]);
 
         });
 
@@ -2558,7 +2560,7 @@ describe('DatePicker', function () {
             await element(helper.max_Id).sendKeys("2/22/2012" + Key.ENTER);
             await element(helper.value_Id).sendKeys("2/12/2012" + Key.ENTER);
             await element(helper.pickerIcon_ClassName).click();
-            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Datepicker_firstday_min_max_' + themes[i]);
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Datepicker_firstday_min_max_2_' + themes[i]);
 
         });
         // it('DatePicker with Floatlabel', async () => {
@@ -2944,7 +2946,7 @@ describe('DatePicker', function () {
             await element(helper.value_Id).sendKeys("2/12/2019" + Key.ENTER);
             await element(helper.show_Id).click();
             await element(helper.focusOut_Id).click();
-            browser.sleep(2000);
+            await browser.sleep(2000);
             browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_show_focusOut_input_' + themes[i]);
         });
         it('DatePicker_show', async () => {
@@ -2960,7 +2962,7 @@ describe('DatePicker', function () {
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_focusIn_input_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'Datepicker_focusIn_input_' + themes[i]);
         });
         it('DatePicker_value_focusIn', async () => {
             await browser.get(browser.basePath + '/demos/datePicker/index.html');
@@ -2968,7 +2970,7 @@ describe('DatePicker', function () {
             browser.executeScript(path);
             await element(helper.value_Id).sendKeys("2/12/2039" + Key.ENTER);
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_focusIn_value_input_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'Datepicker_focusIn_value_input_' + themes[i]);
         });
         it('DatePicker_focusOut', async () => {
             await browser.get(browser.basePath + '/demos/datePicker/index.html');

@@ -36,9 +36,9 @@ export function getTimeProps(time: TimePicker): (simple | complex)[] {
     props.push({ prop: 'showClearButton ', type: 'bool' });
     props.push({ prop: 'strictMode ', type: 'bool' });
     props.push({ prop: 'cssClass', type: 'text' });
-    props.push({ prop: 'floatLabelType', type: 'text' });
-    props.push({ prop: 'format', type: 'text' });
-    props.push({ prop: 'locale', type: 'text' });
+    props.push({ prop: 'floatLabelType', data: ['Never', 'Auto', 'Always'], type: 'select' });
+    props.push({ prop: 'format', data: ['hh:mm a', 'HH:mm', 'HH'], type: 'select' });
+    props.push({ prop: 'locale', data: ['en-US', 'de-DE', 'ar'], type: 'select' });
     props.push({ prop: 'max', type: 'text' });
     props.push({ prop: 'min', type: 'text' });   
     props.push({ prop: 'placeholder', type: 'text' });

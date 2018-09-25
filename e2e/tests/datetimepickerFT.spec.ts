@@ -5,11 +5,11 @@ import { Property, queryParams } from "@syncfusion/ej2-base";
 var helper: Helper = new Helper();
 
 //var event = new Event('change');
-let themes: String[] = ["material", "fabric", "bootstrap", "highcontrast"];
-//let themes: String[] = ["material"];
+//let themes: String[] = ["material", "fabric", "bootstrap", "highcontrast"];
+let themes: String[] = ["material"];
 describe('DateTimePicker', function () {
     for (let i = 0; i < themes.length; i++) {
-        let fileName: string = 'https://cdn.syncfusion.com/ej2/ej2-calendars/styles/' + themes[i] + '.css';
+        let fileName: string = 'https://cdn.syncfusion.com/ej2/' + themes[i] + '.css';
         it('Default DateTimePicker', async () => {
             await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
@@ -76,7 +76,7 @@ describe('DateTimePicker', function () {
             await element(helper.clear_Id).click();
             await element(helper.value_Id).sendKeys("5/5/2018 10:00 AM" + Key.ENTER);
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimepicker_rtl_clear_input_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'DateTimepicker_rtl_clear_input_' + themes[i]);
 
         });
 
@@ -466,6 +466,74 @@ describe('DateTimePicker', function () {
             browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_rtl_min_max_value_timepoupup_' + themes[i]);
         });
 
+        it('DateTimePicker_rtl_min_max_value*', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.rtl_Id).click();
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("6/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("1/12/2012 10:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_rtl_min_max_value2_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_rtl_min_max_value2_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_rtl_min_max_value2_timepoupup_' + themes[i]);
+        });
+
+        it('DateTimePicker_rtl_min_max_value*', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.rtl_Id).click();
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("5/12/2012 10:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_rtl_min_max_value3_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_rtl_min_max_value3_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_rtl_min_max_value3_timepoupup_' + themes[i]);
+        });
+
+        it('DateTimePicker_rtl_min_max_value', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.rtl_Id).click();
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_rtl_min_max_value4_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_rtl_min_max_value4_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_rtl_min_max_value4_timepoupup_' + themes[i]);
+        });
+
+        it('DateTimePicker_rtl_min_max_value', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.rtl_Id).click();
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_rtl_min_max_value5_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_rtl_min_max_value5_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_rtl_min_max_value5_timepoupup_' + themes[i]);
+        });
+
         it('DateTimePicker_rtl_min_max_value_same', async () => {
             browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
@@ -517,7 +585,7 @@ describe('DateTimePicker', function () {
             await element(helper.rtl_Id).click();
             await element(helper.strict_Id).click();
             await element(helper.value_Id).sendKeys("3/28/9999 10:00 AM" + Key.ENTER);
-            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_rtl_value2_strictmode2_input_' + themes[i]);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_rtl_values_strictmode2_input_' + themes[i]);
             await element(helper.dateIcon_className).click();
             browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_rtl_value2_strictmode2_datepopup_' + themes[i]);
         });
@@ -548,6 +616,42 @@ describe('DateTimePicker', function () {
             browser.compareScreen(element(By.className('e-datetime-wrapper')), 'Datetimepicker_Rtl with min_High_value_strictmode4_input_' + themes[i]);
             await element(helper.dateIcon_className).click();
             browser.compareScreen(element(By.id('dateTime_datepopup')), 'Datetimepicker_Rtl with min_High_value_strictmode4_datepopup_' + themes[i]);
+        });
+
+        it('DateTimePicker_rtl_min_max_value_strict*', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.rtl_Id).click();
+            await element(helper.strict_Id).click();
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("6/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("1/12/2012 10:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_rtl_min_max_value_strict5_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_rtl_min_max_value_strict5_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_rtl_min_max_value_strict5_timepoupup_' + themes[i]);
+        });
+
+        it('DateTimePicker_rtl_min_max_value*', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.rtl_Id).click();
+            await element(helper.strict_Id).click();
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("5/12/2012 10:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_rtl_min_max_value_strict6_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_rtl_min_max_value_strict6_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_rtl_min_max_value_strict6_timepoupup_' + themes[i]);
         });
 
         it('DateTimePicker_rtl_step', async () => {
@@ -617,7 +721,7 @@ describe('DateTimePicker', function () {
             browser.executeScript(path);
             await element(helper.rtl_Id).click();
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_rtl_focusIn_input_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'DateTimePicker_rtl_focusIn_input_' + themes[i]);
         });
         it('DateTimePicker_rtl_blur', async () => {
             await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
@@ -671,6 +775,7 @@ describe('DateTimePicker', function () {
             await element(By.xpath("//*[contains(@class,'e-selected')]")).click();
             browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_Rtl_start_depth_3_datepoupup2_' + themes[i]);
             await element(By.xpath("//*[contains(@class,'e-selected')]")).click();
+            await browser.sleep(20000);
             browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_Rtl_start_depth_3_datepoupup3_' + themes[i]);
         });
 
@@ -702,7 +807,7 @@ describe('DateTimePicker', function () {
             await element(helper.enable_Id).click();
             await element(helper.value_Id).sendKeys("5/5/2018 10:00 AM" + Key.ENTER);
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimepicker_disable_focus_input_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'DateTimepicker_disable_focus_input_' + themes[i]);
         });
 
         // readonly property
@@ -721,7 +826,7 @@ describe('DateTimePicker', function () {
             browser.executeScript(path);
             await element(helper.read_Id).click();
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimepicker_readonly_focus_input_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'DateTimepicker_readonly_focus_input_' + themes[i]);
         });
 
         //  Clearbutton property
@@ -743,7 +848,7 @@ describe('DateTimePicker', function () {
             await element(helper.clear_Id).click();
             await element(helper.value_Id).sendKeys("5/5/2018 10:00 AM" + Key.ENTER);
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimepicker_clear_focus_input_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'DateTimepicker_clear_focus_input_' + themes[i]);
         });
 
         //  weekNumber property
@@ -1060,6 +1165,74 @@ describe('DateTimePicker', function () {
             browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_week_min_high_max_timepoupup_' + themes[i]);
         });
 
+        it('DateTimePicker_week_min_max_value*', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.week_Id).click();
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("6/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("1/12/2012 10:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_week_min_max_value2_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_week_min_max_value2_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_week_min_max_value2_timepoupup_' + themes[i]);
+        });
+
+        it('DateTimePicker_week_min_max_value*', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.week_Id).click();
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("5/12/2012 10:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_week_min_max_value3_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_week_min_max_value3_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_week_min_max_value3_timepoupup_' + themes[i]);
+        });
+
+        it('DateTimePicker_week_min_max_value', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.week_Id).click();
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_week_min_max_value4_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_week_min_max_value4_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_week_min_max_value4_timepoupup_' + themes[i]);
+        });
+
+        it('DateTimePicker_week_min_max_value', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.week_Id).click();
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_week_min_max_value5_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_week_min_max_value5_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_week_min_max_value5_timepoupup_' + themes[i]);
+        });
+
         it('DateTimePicker_weekNumber_value_strictmode case -1*', async () => {
             await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
@@ -1079,7 +1252,7 @@ describe('DateTimePicker', function () {
             await element(helper.week_Id).click();
             await element(helper.strict_Id).click();
             await element(helper.value_Id).sendKeys("3/28/9999 10:00 AM" + Key.ENTER);
-            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_rtl_value2_strictmode2_input_' + themes[i]);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_rtl_value_strictmode2_input_' + themes[i]);
             await element(helper.dateIcon_className).click();
             browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_weekNumber_value2_strictmode2_datepopup_' + themes[i]);
         });
@@ -1239,6 +1412,7 @@ describe('DateTimePicker', function () {
             await element(helper.dateIcon_className).click();
             browser.compareScreen(element(By.id('dateTime_datepopup')), 'Datetimepicker_today_min_value_datepopup_' + themes[i]);
             await element(helper.timeIcon_className).click();
+            await browser.sleep(20000);
             browser.compareScreen(element(By.id('dateTime_timepopup')), 'Datetimepicker_today_min_value_timepopup_' + themes[i]);
         });
 
@@ -1256,7 +1430,7 @@ describe('DateTimePicker', function () {
             await element(helper.timeIcon_className).click();
             browser.compareScreen(element(By.id('dateTime_timepopup')), 'Datetimepicker_today_min_High_value_timepopup_' + themes[i]);
         });
-        it('DateTimePicker_today_Min_value', async () => {
+        it('DateTimePicker_today_Min_value1', async () => {
             await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
@@ -1266,9 +1440,9 @@ describe('DateTimePicker', function () {
             await element(helper.value_Id).sendKeys("2/2/2030 10:00 AM" + Key.ENTER);
             browser.compareScreen(element(By.className('e-datetime-wrapper')), 'Datetimepicker_today_min_value_input_' + themes[i]);
             await element(helper.dateIcon_className).click();
-            browser.compareScreen(element(By.id('dateTime_datepopup')), 'Datetimepicker_today_min_value_datepopup_' + themes[i]);
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'Datetimepicker_today_min_value1_datepopup_' + themes[i]);
             await element(helper.timeIcon_className).click();
-            browser.compareScreen(element(By.id('dateTime_timepopup')), 'Datetimepicker_today_min_value_timepopup_' + themes[i]);
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'Datetimepicker_today_min_value1_timepopup_' + themes[i]);
         });
         it('DateTimePicker_today_Min_value', async () => {
             browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
@@ -1932,7 +2106,7 @@ describe('DateTimePicker', function () {
             await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
             await element(helper.value_Id).sendKeys("6/22/2012 10:00 AM" + Key.ENTER);
             await element(helper.show_Id).click();
-            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_start_year_min_high_max_datepopup_' + themes[i]);
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_strat_year_show_datepopup_' + themes[i]);
         });
 
 
@@ -2032,7 +2206,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_start_decade_Min_value', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
@@ -2047,7 +2221,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_start_decade_Min_value*', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
@@ -2078,7 +2252,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_start_decade_Max', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
@@ -2092,7 +2266,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_start_decade_Max_value', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
@@ -2107,7 +2281,7 @@ describe('DateTimePicker', function () {
             browser.compareScreen(element(By.id('dateTime_timepopup')), 'Datetimepicker_start_decade_max_value_timepoupup_' + themes[i]);
         });
         it('DateTimePicker_start_decade_Max_value*', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
@@ -2289,7 +2463,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_start_decade_Max_value_strict*', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.strict_Id).click();
@@ -2304,7 +2478,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_start_decade_Min_value_strict_*', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.strict_Id).click();
@@ -2333,7 +2507,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_Min_value', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.min_Id).clear();
@@ -2346,7 +2520,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_Min_value*', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.min_Id).clear();
@@ -2372,7 +2546,7 @@ describe('DateTimePicker', function () {
             browser.compareScreen(element(By.id('dateTime_timepopup')), 'Datetimepicker_min_value_same_timepopup_' + themes[i]);
         });
         it('DateTimePicker_Min_value', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.min_Id).clear();
@@ -2385,7 +2559,7 @@ describe('DateTimePicker', function () {
             browser.compareScreen(element(By.id('dateTime_timepopup')), 'Datetimepicker_min_value2_timepopup_' + themes[i]);
         });
         it('DateTimePicker_Max', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.max_Id).clear();
@@ -2397,7 +2571,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_Max_value', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.max_Id).clear();
@@ -2410,7 +2584,7 @@ describe('DateTimePicker', function () {
             browser.compareScreen(element(By.id('dateTime_timepopup')), 'Datetimepicker_max_value_timepoupup_' + themes[i]);
         });
         it('DateTimePicker_Max_value*', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.max_Id).clear();
@@ -2506,7 +2680,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_min_max_value_same', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.min_Id).clear();
@@ -2535,6 +2709,70 @@ describe('DateTimePicker', function () {
             browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_min_high_max_timepoupup_' + themes[i]);
         });
 
+        it('DateTimePicker_min_max_value*', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("6/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("1/12/2012 10:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_min_max_value2_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_min_max_value2_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_min_max_value2_timepoupup_' + themes[i]);
+        });
+
+        it('DateTimePicker_min_max_value*', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("5/12/2012 10:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_min_max_value3_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_min_max_value3_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_min_max_value3_timepoupup_' + themes[i]);
+        });
+
+        it('DateTimePicker_min_max_value', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_min_max_value4_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_min_max_value4_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_min_max_value4_timepoupup_' + themes[i]);
+        });
+
+        it('DateTimePicker_min_max_value', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_min_max_value5_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_min_max_value5_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_min_max_value5_timepoupup_' + themes[i]);
+        }
+
         it('DateTimePicker_value_strictmode case -1*', async () => {
             await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
@@ -2562,7 +2800,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_Max_value_strictmode case-3*', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.strict_Id).click();
@@ -2577,7 +2815,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_Min_value_strictmode case-4*', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.strict_Id).click();
@@ -2634,7 +2872,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicke_Max_value_strictmode case-3*', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.strict_Id).click();
@@ -2659,8 +2897,42 @@ describe('DateTimePicker', function () {
             browser.compareScreen(element(By.id('dateTime_datepopup')), 'Datetimepicker_min_High_value_strictmode4_datepopup_' + themes[i]);
         });
 
+        it('DateTimePicker_min_max_value_strict*', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.strict_Id).click();
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("6/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("1/12/2012 10:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_min_max_value_strict5_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_min_max_value_strict5_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_min_max_value_strict5_timepoupup_' + themes[i]);
+        });
+
+        it('DateTimePicker_min_max_value_strict*', async () => {
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.strict_Id).click();
+            await element(helper.min_Id).clear();
+            await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("2/2/2012 3:00 AM" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("4/22/2012 10:00 AM" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("5/12/2012 10:00 AM" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_min_max_value_strict6_input_' + themes[i]);
+            await element(helper.dateIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_datepopup')), 'DateTimePicker_min_max_value_strict6_datepopup_' + themes[i]);
+            await element(helper.timeIcon_className).click();
+            browser.compareScreen(element(By.id('dateTime_timepopup')), 'DateTimePicker_min_max_value_strict6_timepoupup_' + themes[i]);
+        });
+
         it('DateTimePicker_RTL_firstday', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.rtl_Id).click();
@@ -2671,7 +2943,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_RTL_firstday', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.rtl_Id).click();
@@ -2682,7 +2954,7 @@ describe('DateTimePicker', function () {
         });
 
         it('DateTimePicker_firstday', async () => {
-            browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
+            await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.firstDay_Id).sendKeys("4" + Key.ENTER);
@@ -2751,7 +3023,7 @@ describe('DateTimePicker', function () {
             let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
             browser.executeScript(path);
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_focusIn_input_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'DateTimePicker_focusIn_input_' + themes[i]);
         });
         it('DateTimePicker_blur', async () => {
             await browser.get(browser.basePath + '/demos/dateTimePicker/index.html');
@@ -2759,8 +3031,7 @@ describe('DateTimePicker', function () {
             browser.executeScript(path);
             await element(helper.value_Id).sendKeys("2/12/2012 3:00 AM" + Key.ENTER);
             await element(helper.focusIn_Id).click();
-            await element(helper.blur_Id).click();
-            browser.compareScreen(element(By.className('e-datetime-wrapper')), 'DateTimePicker_blur_input_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'DateTimePicker_blur_input_' + themes[i]);
         });
 
         it('DateTimePicker_blur', async () => {

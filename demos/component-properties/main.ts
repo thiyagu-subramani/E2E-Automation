@@ -1,5 +1,5 @@
 import * as Util from './properties-util';
-import { CalendarsProperty } from './component-properties-utils';
+import { CalendarsProperty } from './range-component-properties-utils';
 import { CalendarsMethods } from './component-methods';
 import { simple, complex, ButtonOptions, DDLOptions, rowOptions, InputOptions } from './properties-util';
 import { createElement } from '@syncfusion/ej2-base';
