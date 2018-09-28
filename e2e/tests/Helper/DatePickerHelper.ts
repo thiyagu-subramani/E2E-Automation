@@ -4,12 +4,15 @@ import { browser, element, By, protractor } from "@syncfusion/ej2-base/e2e/index
 
 export class Helper {
 
+  public todayButton_Xpath: object = By.xpath("//button[contains(text(),'Today')]");
+  
   public pickerIcon_ClassName: object=By.className('e-input-group-icon');
-  public nextDateIcon_ClassName: object = By.className('e-date-icon-next');
-  public prevDateIcon_ClassName: object = By.className('e-date-icon-prev');
+  public nextDateIcon_ClassName: object = By.xpath("//div[@class='e-calendar e-control e-keyboard']//*[contains(@class,'e-next')]");
+  public prevDateIcon_ClassName: object = By.xpath("//div[@class='e-calendar e-control e-keyboard']//*[contains(@class,'e-prev')]");
   public title_ClassName: object = By.className('e-title');
   public footer_ClassName: object = By.className('e-footer');
   public  clearIcon_ClassName : object = By.className('e-clear-icon');
+  // public popup_ClassName: object = By.className('e-popup-wrapper');
 
    // properties Id
    public persist_Id: object = By.id("grid_checkbox_0");

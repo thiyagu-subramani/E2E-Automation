@@ -1765,7 +1765,7 @@ describe('DatePicker', function () {
             await element(helper.read_Id).click();
             await element(helper.value_Id).sendKeys("2/12/2039" + Key.ENTER);
             await element(helper.focusIn_Id).click();
-            browser.compareScreen(By.className('content-wrapper')), 'Datepicker_readonly_focus_' + themes[i]);
+            browser.compareScreen(element(By.className('content-wrapper')), 'Datepicker_readonly_show_' + themes[i]);
 
         });
 
@@ -2981,5 +2981,570 @@ describe('DatePicker', function () {
             await element(helper.focusOut_Id).click();
             browser.compareScreen(element(By.className('e-date-wrapper')), 'Datepicker_focusOut_input_' + themes[i]);
         });
+
+        it('Navigation prev and next in Calendar control', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("3/28/2039" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-date-wrapper')), 'DatePicker_Default_inter_' + themes[i]);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'DatePicker_Navigate_Default_' + themes[i]);
+            await element(helper.nextDateIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'DatePicker_Navigate_NextMonth_' + themes[i]);
+            element(helper.prevDateIcon_ClassName).click();
+            element(helper.prevDateIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'DatePicker_Navigate_PreviousMonth_' + themes[i]);
+        });
+
+        it('Navigation year Decade Calendar control', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("3/28/2039" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-date-wrapper')), 'Navigation year Decade Calendar control1_' + themes[i]);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control2_' + themes[i]);
+            await  element(helper.title_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control3_' + themes[i]);
+            element(helper.title_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control4_' + themes[i]);
+        });
+
+        it('Navigation year Decade Calendar control', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("3/28/2015" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-date-wrapper')), 'Navigation year Decade Calendar control5_' + themes[i]);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control6_' + themes[i]);
+            await  element(helper.title_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control7_' + themes[i]);
+            element(helper.title_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control8_' + themes[i]);
+        });
+
+        it('Navigation year Decade Calendar control label', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("3/28/2015" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-date-wrapper')), 'Navigation year Decade Calendar control label1_' + themes[i]);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label2_' + themes[i]);
+            expect(element(helper.title_ClassName).getText()).toContain("March 2015");
+            await element(helper.title_ClassName).click();
+            expect(element(helper.title_ClassName).getText()).toContain("2015");
+            await element(helper.title_ClassName).click();
+            expect(element(helper.title_ClassName).getText()).toContain("2010 - 2019");
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label4_' + themes[i]);
+        });
+
+        it('Navigation year Decade Calendar control label', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("3/28/2015" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-date-wrapper')), 'Navigation year Decade Calendar control label5_' + themes[i]);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label6_' + themes[i]);
+            expect(element(helper.title_ClassName).getText()).toContain("March 2015");
+            await element(helper.title_ClassName).click();
+            expect(element(helper.title_ClassName).getText()).toContain("2015");
+            await element(helper.nextDateIcon_ClassName).click();
+            expect(element(helper.title_ClassName).getText()).toContain("2016");
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label7_' + themes[i]);
+            await element(helper.title_ClassName).click();
+            expect(element(helper.title_ClassName).getText()).toContain("2010 - 2019");
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label8_' + themes[i]);
+            await element(helper.nextDateIcon_ClassName).click();
+            expect(element(helper.title_ClassName).getText()).toContain("2020 - 2029");
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label9_' + themes[i]);
+        });
+
+        it('Navigation year Decade Calendar control label', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("3/28/2015" + Key.ENTER);
+            browser.compareScreen(element(By.className('e-date-wrapper')), 'Navigation year Decade Calendar control label10_' + themes[i]);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label11_' + themes[i]);
+            expect(element(helper.title_ClassName).getText()).toContain("March 2015");
+            await element(helper.title_ClassName).click();
+            expect(element(helper.title_ClassName).getText()).toContain("2015");
+            await element(helper.prevDateIcon_ClassName).click();
+            expect(element(helper.title_ClassName).getText()).toContain("2014");
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label12_' + themes[i]);
+            await element(helper.title_ClassName).click();
+            expect(element(helper.title_ClassName).getText()).toContain("2010 - 2019");
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label13_' + themes[i]);
+            await element(helper.prevDateIcon_ClassName).click();
+            expect(element(helper.title_ClassName).getText()).toContain("2000 - 2009");
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label14_' + themes[i]);
+        });
+
+        it('min_max', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.min_Id).clear(); await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("3/8/2015" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("3/28/2015" + Key.ENTER);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'min_max1_' + themes[i]);
+            expect(element(helper.prevDateIcon_ClassName).getAttribute("aria-disabled")).toContain("true");
+            expect(element(helper.nextDateIcon_ClassName).getAttribute("aria-disabled")).toContain("true");
+            expect(element(helper.title_ClassName).getText()).toContain("March 2015");
+            await element(helper.title_ClassName).click();
+            expect(element(helper.title_ClassName).getText()).toContain("2015");
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'min_max2_' + themes[i]);
+            await element(helper.title_ClassName).click();
+            expect(element(helper.title_ClassName).getText()).toContain("2010 - 2019");
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'min_max3_' + themes[i]);
+        });
+
+        it('min_max', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.min_Id).clear(); await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("3/8/2015" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("3/28/2045" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("4/4/2019" + Key.ENTER);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'min_max4_' + themes[i]);
+            expect(element(helper.title_ClassName).getText()).toContain("April 2019");
+            await element(helper.nextDateIcon_ClassName).click();
+            expect(element(helper.title_ClassName).getText()).toContain("May 2019");
+            element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-month']//tbody/tr[2]/td[5]")).click();
+            browser.sleep(2000);
+            browser.compareScreen(element(By.className('content-wrapper')), 'min_max5_' + themes[i]);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'min_max6_' + themes[i]);
+        });
+
+        it('Navigate and select value', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.min_Id).clear(); await element(helper.max_Id).clear();
+            await element(helper.min_Id).sendKeys("3/8/2015" + Key.ENTER);
+            await element(helper.max_Id).sendKeys("3/28/2045" + Key.ENTER);
+            await element(helper.value_Id).sendKeys("4/4/2019" + Key.ENTER);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value1_' + themes[i]);
+            await element(helper.title_ClassName).click();
+            await element(helper.title_ClassName).click();
+            element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-decade']//tbody/tr[2]/td[4]")).click();
+            browser.sleep(2000);
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value2_' + themes[i]);
+            element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-year']//tbody/tr[2]/td[4]")).click();
+            browser.sleep(2000);
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value3_' + themes[i]);
+            element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-month']//tbody/tr[2]/td[4]")).click();
+            browser.compareScreen(element(By.className('content-wrapper')), 'value4_' + themes[i]);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value5_' + themes[i]);
+        });
+
+        it('Start and Depth', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("4/4/2019" + Key.ENTER);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.depth_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value6_' + themes[i]);
+            element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-decade']//tbody/tr[2]/td[4]")).click();
+            browser.sleep(2000);
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value7_' + themes[i]);
+            element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-year']//tbody/tr[2]/td[4]")).click();
+            browser.sleep(2000);
+            browser.compareScreen(element(By.className('content-wrapper')), 'value8_' + themes[i]);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value9_' + themes[i]);
+        });
+
+        it('Start and Depth', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("4/4/2019" + Key.ENTER);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.depth_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value10_' + themes[i]);
+            element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-year']//tbody/tr[2]/td[4]")).click();
+            browser.sleep(2000);
+            browser.compareScreen(element(By.className('content-wrapper')), 'value11_' + themes[i]);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value12_' + themes[i]);
+        });
+
+        it('Start and Depth', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("4/4/2019" + Key.ENTER);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.depth_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.depth_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value13_' + themes[i]);
+            element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-decade']//tbody/tr[2]/td[4]")).click();
+            browser.compareScreen(element(By.className('content-wrapper')), 'value14_' + themes[i]);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value15_' + themes[i]);
+        });
+
+        it('Start and Depth', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("4/4/2019" + Key.ENTER);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.depth_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.depth_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value16_' + themes[i]);
+            await element(helper.nextDateIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value17_' + themes[i]);
+        });
+
+        it('Start and Depth', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.value_Id).sendKeys("12/12/2019" + Key.ENTER);
+            await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.depth_Id).sendKeys(Key.ARROW_DOWN);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value18_' + themes[i]);
+            await element(helper.nextDateIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value19_' + themes[i]);
+        });
+
+        it('Max', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.max_Id).clear();
+            await element(helper.max_Id).sendKeys("4/24/2018" + Key.ENTER);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.sleep(2000);
+            expect(element(helper.prevDateIcon_ClassName).getAttribute("aria-disabled")).toContain("false");
+            expect(element(helper.nextDateIcon_ClassName).getAttribute("aria-disabled")).toContain("true");
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_20_' + themes[i]);
+        });
+
+        it('Min', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.min_Id).clear();
+            await element(helper.min_Id).sendKeys("4/24/2025" + Key.ENTER);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.sleep(2000);
+            expect(element(helper.prevDateIcon_ClassName).getAttribute("aria-disabled")).toContain("true");
+            expect(element(helper.nextDateIcon_ClassName).getAttribute("aria-disabled")).toContain("false");
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_21_' + themes[i]);
+        });
+
+        it('Min with focusdate', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.min_Id).clear();
+            await element(helper.min_Id).sendKeys("4/24/2025" + Key.ENTER);
+            await element(helper.pickerIcon_ClassName).click();
+            await element(By.className("e-focused-date")).click();
+            browser.compareScreen(element(By.className('content-wrapper')), 'value_22_' + themes[i]);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_23_' + themes[i]);
+        });
+
+
+        it('Max with focusdate', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.max_Id).clear();
+            await element(helper.max_Id).sendKeys("4/24/2018" + Key.ENTER);
+            await element(helper.pickerIcon_ClassName).click();
+            await element(By.className("e-focused-date")).click();
+            browser.compareScreen(element(By.className('content-wrapper')), 'value_24_' + themes[i]);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_25_' + themes[i]);
+        });
+
+        it('Min', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.min_Id).clear();
+            await element(helper.min_Id).sendKeys("4/24/2025" + Key.ENTER);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_26_' + themes[i]);
+            await element(helper.title_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_27_' + themes[i]);
+            await element(helper.title_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_28_' + themes[i]);
+        });
+
+        it('Max', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.max_Id).clear();
+            await element(helper.max_Id).sendKeys("4/24/2018" + Key.ENTER);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_29_' + themes[i]);
+            await element(helper.title_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_30_' + themes[i]);
+            await element(helper.title_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_31_' + themes[i]);
+        });
+
+         it('Min', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.min_Id).clear();
+            await element(helper.min_Id).sendKeys("4/24/2099" + Key.ENTER);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_32_' + themes[i]);
+            await element(helper.title_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_33_' + themes[i]);
+            await element(helper.title_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_34_' + themes[i]);
+            expect(element(helper.prevDateIcon_ClassName).getAttribute("aria-disabled")).toContain("true");
+            expect(element(helper.nextDateIcon_ClassName).getAttribute("aria-disabled")).toContain("true");
+        });
+
+        it('Max', async () => {
+            await browser.get(browser.basePath + '/demos/datePicker/index.html');
+            let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+            browser.executeScript(path);
+            await element(helper.max_Id).clear();
+            await element(helper.max_Id).sendKeys("4/24/1900" + Key.ENTER);
+            await element(helper.pickerIcon_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_35_' + themes[i]);
+            await element(helper.title_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_36_' + themes[i]);
+            await element(helper.title_ClassName).click();
+            browser.compareScreen(element(By.className('e-popup-wrapper')), 'value_37_' + themes[i]);
+            expect(element(helper.prevDateIcon_ClassName).getAttribute("aria-disabled")).toContain("true");
+            expect(element(helper.nextDateIcon_ClassName).getAttribute("aria-disabled")).toContain("true");
+        });
+
+        // mobile
+
+        // it('Navigation prev and next in Calendar control', async () => {
+        //     browser.driver.manage().window().setSize(450, 800);
+        //     await browser.get(browser.basePath + '/demos/datePicker/index.html');
+        //     let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+        //     browser.executeScript(path);
+        //     await element(helper.value_Id).sendKeys("3/28/2039" + Key.ENTER);
+        //     browser.executeScript('window.scrollTo(' + 0 + ', ' + -250 + ');');
+        //     browser.compareScreen(element(By.className('e-date-wrapper')), 'DatePicker_Default_inter_mobile_' + themes[i]);
+        //     await element(helper.pickerIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'DatePicker_Navigate_Default_mobile_' + themes[i]);
+        //     await element(helper.nextDateIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'DatePicker_Navigate_NextMonth_mobile_' + themes[i]);
+        //     element(helper.prevDateIcon_ClassName).click();
+        //     element(helper.prevDateIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'DatePicker_Navigate_PreviousMonth_mobile_' + themes[i]);
+        // });
+
+        // it('Navigation year Decade Calendar control', async () => {
+        //     browser.driver.manage().window().setSize(450, 800);
+        //     await browser.get(browser.basePath + '/demos/datePicker/index.html');
+        //     let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+        //     browser.executeScript(path);
+        //     await element(helper.value_Id).sendKeys("3/28/2039" + Key.ENTER);
+        //     browser.executeScript('window.scrollTo(' + 0 + ', ' + -250 + ');');
+        //     browser.compareScreen(element(By.className('e-date-wrapper')), 'Navigation year Decade Calendar control1_mobile_' + themes[i]);
+        //     await element(helper.pickerIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control2_mobile_' + themes[i]);
+        //     await element(helper.title_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control3_mobile_' + themes[i]);
+        //     element(helper.title_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control4_mobile_' + themes[i]);
+        // });
+
+        // it('Navigation year Decade Calendar control', async () => {
+        //     browser.driver.manage().window().setSize(450, 800);
+        //     await browser.get(browser.basePath + '/demos/datePicker/index.html');
+        //     let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+        //     browser.executeScript(path);
+        //     await element(helper.value_Id).sendKeys("3/28/2015" +Key.);
+        //     browser.executeScript('window.scrollTo(' + 0 + ', ' + -250 + ');');
+        //     browser.compareScreen(element(By.className('e-date-wrapper')), 'Navigation year Decade Calendar control5_mobile_' + themes[i]);
+        //     await element(helper.pickerIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control6_mobile_' + themes[i]);
+        //     await  element(helper.title_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control7_mobile_' + themes[i]);
+        //     element(helper.title_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control8_mobile_' + themes[i]);
+        // });
+
+        // it('Navigation year Decade Calendar control label', async () => {
+        //     browser.driver.manage().window().setSize(450, 800);
+        //     await browser.get(browser.basePath + '/demos/datePicker/index.html');
+        //     let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+        //     browser.executeScript(path);
+        //     await element(helper.value_Id).sendKeys("3/28/2015" + Key.ENTER);
+        //     browser.executeScript('window.scrollTo(' + 0 + ', ' + -250 + ');');
+        //     browser.compareScreen(element(By.className('e-date-wrapper')), 'Navigation year Decade Calendar control label1_mobile_' + themes[i]);
+        //     await element(helper.pickerIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label2_mobile_' + themes[i]);
+        //     expect(element(helper.title_ClassName).getText()).toContain("March 2015");
+        //     await element(helper.title_ClassName).click();
+        //     expect(element(helper.title_ClassName).getText()).toContain("2015");
+        //     await element(helper.title_ClassName).click();
+        //     expect(element(helper.title_ClassName).getText()).toContain("2010 - 2019");
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label4_mobile_' + themes[i]);
+        // });
+
+        // it('Navigation year Decade Calendar control label', async () => {
+        //     browser.driver.manage().window().setSize(450, 800);
+        //     await browser.get(browser.basePath + '/demos/datePicker/index.html');
+        //     let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+        //     browser.executeScript(path);
+        //     await element(helper.value_Id).sendKeys("3/28/2015" + Key.ENTER);
+        //     browser.executeScript('window.scrollTo(' + 0 + ', ' + -250 + ');');
+        //     browser.compareScreen(element(By.className('e-date-wrapper')), 'Navigation year Decade Calendar control label5_mobile_' + themes[i]);
+        //     await element(helper.pickerIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label6_mobile_' + themes[i]);
+        //     expect(element(helper.title_ClassName).getText()).toContain("March 2015");
+        //     await element(helper.title_ClassName).click();
+        //     expect(element(helper.title_ClassName).getText()).toContain("2015");
+        //     await element(helper.nextDateIcon_ClassName).click();
+        //     expect(element(helper.title_ClassName).getText()).toContain("2016");
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label7_mobile_' + themes[i]);
+        //     await element(helper.title_ClassName).click();
+        //     expect(element(helper.title_ClassName).getText()).toContain("2010 - 2019");
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label8_mobile_' + themes[i]);
+        //     await element(helper.nextDateIcon_ClassName).click();
+        //     expect(element(helper.title_ClassName).getText()).toContain("2020 - 2029");
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label9_mobile_' + themes[i]);
+        // });
+
+        // it('Navigation year Decade Calendar control label', async () => {
+        //     browser.driver.manage().window().setSize(450, 800);
+        //     await browser.get(browser.basePath + '/demos/datePicker/index.html');
+        //     let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+        //     browser.executeScript(path);
+        //     await element(helper.value_Id).sendKeys("3/28/2015" + Key.ENTER);
+        //     browser.compareScreen(element(By.className('e-date-wrapper')), 'Navigation year Decade Calendar control label10_mobile_' + themes[i]);
+        //     await element(helper.pickerIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label11_mobile_' + themes[i]);
+        //     expect(element(helper.title_ClassName).getText()).toContain("March 2015");
+        //     await element(helper.title_ClassName).click();
+        //     expect(element(helper.title_ClassName).getText()).toContain("2015");
+        //     await element(helper.prevDateIcon_ClassName).click();
+        //     expect(element(helper.title_ClassName).getText()).toContain("2014");
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label12_mobile_' + themes[i]);
+        //     await element(helper.title_ClassName).click();
+        //     expect(element(helper.title_ClassName).getText()).toContain("2010 - 2019");
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label13_mobile_' + themes[i]);
+        //     await element(helper.prevDateIcon_ClassName).click();
+        //     expect(element(helper.title_ClassName).getText()).toContain("2000 - 2009");
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'Navigation year Decade Calendar control label14_mobile_' + themes[i]);
+        // });
+
+        // it('min_max', async () => {
+        //     browser.driver.manage().window().setSize(450, 800);
+        //     await browser.get(browser.basePath + '/demos/datePicker/index.html');
+        //     let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+        //     browser.executeScript(path);
+        //     await element(helper.min_Id).clear(); await element(helper.max_Id).clear();
+        //     await element(helper.min_Id).sendKeys("3/8/2015" + Key.ENTER);
+        //     await element(helper.max_Id).sendKeys("3/28/2015" + Key.ENTER);
+        //     await element(helper.pickerIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'min_max1_mobile_' + themes[i]);
+        //     expect(element(helper.prevDateIcon_ClassName).getAttribute("aria-disabled")).toContain("true");
+        //     expect(element(helper.nextDateIcon_ClassName).getAttribute("aria-disabled")).toContain("true");
+        //     expect(element(helper.title_ClassName).getText()).toContain("March 2015");
+        //     await element(helper.title_ClassName).click();
+        //     expect(element(helper.title_ClassName).getText()).toContain("2015");
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'min_max2_mobile_' + themes[i]);
+        //     await element(helper.title_ClassName).click();
+        //     expect(element(helper.title_ClassName).getText()).toContain("2010 - 2019");
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'min_max3_mobile_' + themes[i]);
+        // });
+
+        // it('min_max', async () => {
+        //     browser.driver.manage().window().setSize(450, 800);
+        //     await browser.get(browser.basePath + '/demos/datePicker/index.html');
+        //     let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+        //     browser.executeScript(path);
+        //     await element(helper.min_Id).clear(); await element(helper.max_Id).clear();
+        //     await element(helper.min_Id).sendKeys("3/8/2015" + Key.ENTER);
+        //     await element(helper.max_Id).sendKeys("3/28/2045" + Key.ENTER);
+        //     await element(helper.value_Id).sendKeys("4/4/2019" + Key.ENTER);
+        //     await element(helper.pickerIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'min_max4_mobile_' + themes[i]);
+        //     expect(element(helper.title_ClassName).getText()).toContain("April 2019");
+        //     await element(helper.nextDateIcon_ClassName).click();
+        //     expect(element(helper.title_ClassName).getText()).toContain("May 2019");
+        //     element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-month']//tbody/tr[2]/td[5]")).click();
+        //     browser.sleep(2000);
+        //     browser.compareScreen(element(By.className('content-wrapper')), 'min_max5_mobile_' + themes[i]);
+        //     await element(helper.pickerIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'min_max6_mobile_' + themes[i]);
+        // });
+
+        // it('Navigate and select value', async () => {
+        //     browser.driver.manage().window().setSize(450, 800);
+        //     await browser.get(browser.basePath + '/demos/datePicker/index.html');
+        //     let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+        //     browser.executeScript(path);
+        //     await element(helper.min_Id).clear(); await element(helper.max_Id).clear();
+        //     await element(helper.min_Id).sendKeys("3/8/2015" + Key.ENTER);
+        //     await element(helper.max_Id).sendKeys("3/28/2045" + Key.ENTER);
+        //     await element(helper.value_Id).sendKeys("4/4/2019" + Key.ENTER);
+        //     await element(helper.pickerIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'value1_mobile_' + themes[i]);
+        //     await element(helper.title_ClassName).click();
+        //     await element(helper.title_ClassName).click();
+        //     element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-decade']//tbody/tr[2]/td[4]")).click();
+        //     browser.sleep(2000);
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'value2_mobile_' + themes[i]);
+        //     element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-year']//tbody/tr[2]/td[4]")).click();
+        //     browser.sleep(2000);
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'value3_mobile_' + themes[i]);
+        //     element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-month']//tbody/tr[2]/td[4]")).click();
+        //     browser.compareScreen(element(By.className('content-wrapper')), 'value4_mobile_' + themes[i]);
+        //     await element(helper.pickerIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'value5_mobile_' + themes[i]);
+        // });
+
+        // it('Start and Depth', async () => {
+        //     browser.driver.manage().window().setSize(450, 800);
+        //     await browser.get(browser.basePath + '/demos/datePicker/index.html');
+        //     let path: string = "((document.getElementsByTagName('head')[0]).querySelector('link')).setAttribute('href','" + fileName + "')";
+        //     browser.executeScript(path);
+        //     await element(helper.value_Id).sendKeys("4/4/2019" + Key.ENTER);
+        //     await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+        //     await element(helper.start_Id).sendKeys(Key.ARROW_DOWN);
+        //     await element(helper.depth_Id).sendKeys(Key.ARROW_DOWN);
+        //     await element(helper.pickerIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'value6_mobile_' + themes[i]);
+        //     element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-decade']//tbody/tr[2]/td[4]")).click();
+        //     browser.sleep(2000);
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'value7_mobile_' + themes[i]);
+        //     element(By.xpath("//div[@class='e-calendar e-control e-keyboard']//div[@class='e-content e-year']//tbody/tr[2]/td[4]")).click();
+        //     browser.sleep(2000);
+        //     browser.compareScreen(element(By.className('content-wrapper')), 'value8_mobile_' + themes[i]);
+        //     await element(helper.pickerIcon_ClassName).click();
+        //     browser.compareScreen(element(By.className('e-popup-wrapper')), 'value9_mobile_' + themes[i]);
+        // });
     }
 });

@@ -9,20 +9,27 @@ export class Helper {
 
   public applyButton_Xpath: object = By.xpath("//button[contains(text(),'Apply')]");
   public cancelButton_Xpath: object = By.xpath("//button[contains(text(),'Cancel')]");
-  public inputBox_Id: object = By.id("daterangepicker");
+  public inputBox_Id: object = By.id("dateRange");
   public startDatePrevicon_Xpath: object = By.xpath("//div[@class='e-left-container']//*[contains(@class,'e-prev')]");
   public startDateNexticon_Xpath: object = By.xpath("//div[@class='e-left-container']//*[contains(@class,'e-next')]");
   public endDatePrevicon_Xpath: object = By.xpath("//div[@class='e-right-container']//*[contains(@class,'e-prev')]");
   public endDateNexticon_Xpath: object = By.xpath("//div[@class='e-right-container']//*[contains(@class,'e-next')]");
   public startDateHeader_Xpath: object = By.xpath("//div[@class='e-left-container']//*[contains(@class,'e-title')]");
   public endDateHeader_Xpath: object = By.xpath("//div[@class='e-right-container']//*[contains(@class,'e-title')]");
+  //mobile 
+  public DatePrevicon_Xpath: object = By.xpath("//div[@class='e-calendar-container']//*[contains(@class,'e-prev')]");
+  public DateNexticon_Xpath: object = By.xpath("//div[@class='e-calendar-container']//*[contains(@class,'e-next')]");
+  public DateHeader_Xpath: object = By.xpath("//div[@class='e-calendar-container']//*[contains(@class,'e-title')]");
+  public mblEndDateLabel_ClassName: Object = By.className("e-end-btn");
+  public mblStartDateLabel_ClassName: Object = By.className("e-start-btn");
+  public applyButtonClick_Xpath: object = By.xpath("//div[@class='e-footer']//*[contains(@class,'e-apply')]");
+
   public startDateLabel_ClassName: Object = By.className("e-start-label");
   public endDateLabel_ClassName: Object = By.className("e-end-label");
-
-
+  public selectedDays_ClassName: Object = By.className("e-day-span");
   public dateRangeIcon_ClassName: object = By.className('e-range-icon');
   public dateRangePopup_Id: object = By.id("dateRange_popup");
-  public  clearIcon_ClassName : object = By.className('e-clear-icon');
+  public clearIcon_ClassName : object = By.className('e-clear-icon');
   // properties Id
   public persist_Id: object = By.id("grid_checkbox_0");
   public rtl_Id: object = By.id("grid_checkbox_1");
@@ -43,7 +50,7 @@ export class Helper {
   public minDays_Id: object = By.id("grid_input_16");
   public placeholder_Id: object = By.id("grid_input_17");
   public presets_Id: object = By.id("grid_input_18");
-  public separator_Id: object = By.id("grid_select_19");
+  public separator_Id: object = By.id("grid_input_19");
   public startDate_Id: object = By.id("grid_input_20");
   public value_Id: object = By.id("grid_input_21");
   public width_Id: object = By.id("grid_input_22");
